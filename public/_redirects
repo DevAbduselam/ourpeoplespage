@@ -2,4 +2,4 @@
 /r/* /.netlify/functions/showRote?id=:splat 302
 
 # Real 404s can just go directly here:
-/* 404.html 404
+/* /404.html 404
