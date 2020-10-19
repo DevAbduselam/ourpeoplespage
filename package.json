@@ -10,7 +10,5 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.20.0"
-  }
+  "dependencies": {}
 }

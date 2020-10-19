@@ -1,5 +1,5 @@
 # unfound lollies should proxy to the API directly
-/r/* /.netlify/functions/showRote?id=:splat 302
+/r/* /.netlify/functions/showRoute?id=:splat 302
 
 # Real 404s can just go directly here:
 /* /404.html 404
