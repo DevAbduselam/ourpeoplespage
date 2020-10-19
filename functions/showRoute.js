@@ -21,7 +21,7 @@ exports.handler = function (event, context, callback) {
   if (allowedPaths.includes(path)) {
     return callback(null, {
       statusCode: 200,
-      body: renderer('./template/template.html', {
+      body: renderer('../template.html', {
         person: path
       })
     });
