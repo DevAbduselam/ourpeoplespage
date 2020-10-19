@@ -15,8 +15,10 @@ const renderer = (templatePath, data) => {
   return cooo;
 }
 exports.handler = function (event, context, callback) {
+  console.log('got request: ', JSON.stringify(event));
   const allowedPaths = ["mama", "baba", "dada", "nana"];
   const path = event.queryStringParameters.id.replace("/", "");
+  console.log("path: ", path);
   if (allowedPaths.includes(path)) {
     return callback(null, {
       statusCode: 200,
