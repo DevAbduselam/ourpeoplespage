@@ -1,6 +1,5 @@
-const { readFileSync } = require('fs');
-const renderer = (templatePath, data) => {
-  let cooo = readFileSync(templatePath).toString();
+const renderer = (template, data) => {
+  let cooo = template;
   let isThere = true;
   while (isThere) {
     if (cooo.includes('{{{')) {
@@ -13,6 +12,18 @@ const renderer = (templatePath, data) => {
   }
   return cooo;
 }
+const templateHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="{{{data.person}}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+<body>
+  {{{data.person}}}
+</body>
+</html>`;
 exports.handler = function (event, context, callback) {
   console.log('got request: ', JSON.stringify(event));
   const allowedPaths = ["mama", "baba", "dada", "nana"];
@@ -21,7 +32,7 @@ exports.handler = function (event, context, callback) {
   if (allowedPaths.includes(path)) {
     return callback(null, {
       statusCode: 200,
-      body: renderer('../template.html', {
+      body: renderer(templateHtml, {
         person: path
       })
     });
