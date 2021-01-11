@@ -32,7 +32,7 @@ exports.handler = function (event, context, callback) {
   const path = event.queryStringParameters.id.replace("/", "");
   console.log("path: ", path);
   if (allowedPaths.includes(path)) {
-    let templateHtml = readFileSync('template.html').toString();
+    let templateHtml = readFileSync('./files/template.html').toString();
     return callback(null, {
       statusCode: 200,
       body: renderer(templateHtml, {
