@@ -1,5 +1,3 @@
-const { readFileSync } = require('fs');
-
 const renderer = (template, data) => {
   let cooo = template;
   let isThere = true;
@@ -14,25 +12,28 @@ const renderer = (template, data) => {
   }
   return cooo;
 }
-// const templateHtml = `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta name="description" content="{{{data.person}}}">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <title>Title</title>
-// </head>
-// <body>
-//   {{{data.person}}}
-// </body>
-// </html>`;
+const templateHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="{{{data.person}}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+<body>
+  {{{data.person}}}
+</body>
+<script>
+  const listofusers = [{{{people}}}];
+</script>
+</html>
+`;
 exports.handler = function (event, context, callback) {
   console.log('got request: ', JSON.stringify(event));
   const allowedPaths = ["mama", "baba", "dada", "nana"];
   const path = event.queryStringParameters.id.replace("/", "");
   console.log("path: ", path);
   if (allowedPaths.includes(path)) {
-    let templateHtml = readFileSync('./files/template.html').toString();
     return callback(null, {
       statusCode: 200,
       body: renderer(templateHtml, {
