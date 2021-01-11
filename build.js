@@ -13,7 +13,7 @@ const renderer = (templatePath, data) => {
     else isThere = false;
   }
   return cooo;
-}
+};
 if (!existsSync("public")) mkdirSync("public");
 if (!existsSync("public/r")) mkdirSync("public/r");
 people.forEach(person => {
